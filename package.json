@@ -22,5 +22,7 @@
   "bugs": {
     "url": "https://github.com/ultimecreation/stripe/issues"
   },
-  "homepage": "https://github.com/ultimecreation/stripe#readme"
+  "homepage": "https://github.com/ultimecreation/stripe#readme",
+  "devDependencies": {},
+  "keywords": []
 }

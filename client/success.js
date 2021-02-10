@@ -17,6 +17,13 @@ if (sessionId) {
       // user on the server.
       customerId = session.customer;
 
+      /*const transactionData = {
+        customerId: customerId,
+        marque:make,
+        modele:model
+      }
+      saveTransactionData(transactionData)*/
+
       var sessionJSON = JSON.stringify(session, null, 2);
       document.querySelector("pre").textContent = sessionJSON;
     })
@@ -47,4 +54,8 @@ if (sessionId) {
         console.error('Error:', error);
       });
   });
+}
+const saveTransactionData = async (transactionData)=>{
+  let response = await fetch("url qui traiter mes data et le stocker en bdd",{method:"POST"})
+  let data = await response.json()
 }

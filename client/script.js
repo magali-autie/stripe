@@ -45,7 +45,6 @@ fetch("/setup")
   .then(function(json) {
     var publishableKey = json.publishableKey;
     var basicPriceId = json.basicPrice;
-    var proPriceId = json.proPrice;
 
     var stripe = Stripe(publishableKey);
     // Setup event handler to create a Checkout Session when button is clicked
@@ -53,20 +52,6 @@ fetch("/setup")
       .getElementById("basic-plan-btn")
       .addEventListener("click", function(evt) {
         createCheckoutSession(basicPriceId).then(function(data) {
-          // Call Stripe.js method to redirect to the new Checkout page
-          stripe
-            .redirectToCheckout({
-              sessionId: data.sessionId
-            })
-            .then(handleResult);
-        });
-      });
-
-    // Setup event handler to create a Checkout Session when button is clicked
-    document
-      .getElementById("pro-plan-btn")
-      .addEventListener("click", function(evt) {
-        createCheckoutSession(proPriceId).then(function(data) {
           // Call Stripe.js method to redirect to the new Checkout page
           stripe
             .redirectToCheckout({

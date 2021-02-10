@@ -10,6 +10,12 @@ if (env.error) {
 }
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+stripe.charges.create({
+  amount: 1300,
+  currency: "eur",
+  source: "tok_visa", // obtained with Stripe.js
+  metadata: {'order_id': '6735'}
+});
 
 app.use(express.static(process.env.STATIC_DIR));
 app.use(
@@ -78,7 +84,6 @@ app.get("/setup", (req, res) => {
   res.send({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
     basicPrice: process.env.BASIC_PRICE_ID,
-    proPrice: process.env.PRO_PRICE_ID,
   });
 });
 
